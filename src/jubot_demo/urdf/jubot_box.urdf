@@ -1,0 +1,191 @@
+<?xml version="1.0" ?>
+<robot name="jubot">
+    
+<!--base_car-->
+    <link name="base_link">   
+        <visual> 
+            <origin xyz="0.0 0.0 0.16" rpy="0.0 0.0 0.0"/> 
+            <geometry>  
+                <box size="0.67 0.53 0.2"/>            
+            </geometry>
+            <material name="white"> 
+                <color rgba="1 1 1 1"/>  
+            </material>
+        </visual>
+    </link>
+    
+<!--柱子1-->
+    <joint name="zhu1_joint" type="continuous">   
+        <origin xyz="-0.31 0.24 0.31" rpy="0.0 0.0 0.0"/> 
+        <parent link="base_link"/>  
+        <child link="zhu1_link"/> 
+        <axis xyz="0.0 0.0 1"/>  
+    </joint>
+    <link name="zhu1_link">   
+        <visual> 
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+            <geometry>  
+                <box size="-0.05 -0.05 0.1"/>            
+            </geometry>
+            <material name="white"> 
+                <color rgba="1 1 1 1"/>  
+            </material>
+        </visual>
+    </link>
+    
+<!--柱子2-->
+    <joint name="zhu2_joint" type="continuous">   
+        <origin xyz="-0.31 -0.24 0.31" rpy="0.0 0.0 0.0"/> 
+        <parent link="base_link"/>  
+        <child link="zhu2_link"/> 
+        <axis xyz="0.0 0.0 1"/>  
+    </joint>
+    <link name="zhu2_link">   
+        <visual> 
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+            <geometry>  
+                <box size="-0.05 -0.05 0.1"/>            
+            </geometry>
+            <material name="white"> 
+                <color rgba="1 1 1 1"/>  
+            </material>
+        </visual>
+    </link>
+
+<!--柱子3-->
+    <joint name="zhu3_joint" type="continuous">   
+        <origin xyz="0.31 0.24 0.31" rpy="0.0 0.0 0.0"/> 
+        <parent link="base_link"/>  
+        <child link="zhu3_link"/> 
+        <axis xyz="0.0 0.0 1"/>  
+    </joint>
+    <link name="zhu3_link">   
+        <visual> 
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+            <geometry>  
+                <box size="-0.05 -0.05 0.1"/>            
+            </geometry>
+            <material name="white"> 
+                <color rgba="1 1 1 1"/>  
+            </material>
+        </visual>
+    </link>
+
+<!--柱子4-->
+    <joint name="zhu4_joint" type="continuous">   
+        <origin xyz="0.31 -0.24 0.31" rpy="0.0 0.0 0.0"/> 
+        <parent link="base_link"/>  
+        <child link="zhu4_link"/> 
+        <axis xyz="0.0 0.0 1"/>  
+    </joint>
+    <link name="zhu4_link">   
+        <visual> 
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+            <geometry>  
+                <box size="-0.05 -0.05 0.1"/>            
+            </geometry>
+            <material name="white"> 
+                <color rgba="1 1 1 1"/>  
+            </material>
+        </visual>
+    </link>
+
+<!--二层-->
+    <joint name="er_joint" type="continuous">   
+        <origin xyz="0.0 0.0 0.36" rpy="0.0 0.0 0.0"/> 
+        <parent link="base_link"/>  
+        <child link="er_link"/> 
+        <axis xyz="0.0 0.0 1"/>  
+    </joint>
+    <link name="er_link">   
+        <visual> 
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/> 
+            <geometry>  
+                <box size="0.67 0.53 0.05"/>            
+            </geometry>
+            <material name="white"> 
+                <color rgba="1 1 1 1"/>  
+            </material>
+        </visual>
+    </link>	
+
+<!--左后轮-->
+    <joint name="left_back_joint" type="continuous">   
+        <origin xyz="-0.20 0.298 0.109" rpy="1.57 0.0 0.0"/> 
+        <parent link="base_link"/>  
+        <child link="left_back_link"/> 
+        <axis xyz="0.0 1.0 0.0"/>  
+    </joint>
+
+    <link name="left_back_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.109" length="0.04"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+ 
+<!--右后轮-->
+    <joint name="right_back_joint" type="continuous">
+        <origin xyz="-0.20 -0.298 0.109" rpy="1.57 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="right_back_link"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="right_back_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.109" length="0.04"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+<!--左前轮-->
+    <joint name="left_front_joint" type="continuous">
+        <origin xyz="0.20 0.298 0.109" rpy="1.57 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="left_front_link"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="left_front_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                  <cylinder radius="0.109" length="0.04"/>
+                </geometry>
+                <material name="black">
+                    <color rgba="0 0 0 1"/>
+                </material>
+        </visual>
+    </link>
+
+<!--右前轮-->
+    <joint name="right_front_joint" type="continuous">
+        <origin xyz="0.20 -0.298 0.109" rpy="1.57 0.0 0.0"/>
+        <parent link="base_link"/>
+        <child link="right_front_link"/>
+        <axis xyz="0.0 1.0 0.0"/>
+    </joint>
+
+    <link name="right_front_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+                <geometry>
+                    <cylinder radius="0.109" length="0.04"/>
+                </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+</robot>

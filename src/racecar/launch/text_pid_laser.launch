@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<launch>
+    <!-- 开启小车传感器 -->
+    <include file="$(find racecar)/launch/Run_car.launch" />
+    <!-- 开启gmapping建图节点 -->
+    <include file="$(find racecar)/launch/Run_gmapping.launch" />
+    <!-- 开启amcl导航节点 -->
+    <include file="$(find racecar)/launch/mycar_amcl.launch" />
+    <!-- 开启小车控制 -->
+    <node pkg="racecar" type="my_car_control" name="my_car_control" output="screen"/>
+    <!-- 开启发布目标中点节点 -->
+    <node pkg="opencv_text_1" type="laser_2d" name="laser_2d" output="screen"/>
+</launch>

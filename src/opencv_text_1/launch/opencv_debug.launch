@@ -1,0 +1,19 @@
+<launch>
+
+  <!-- 开启激光雷达  -->
+  <!-- <include file="$(find ls01b_v2)/launch/ls01b_v2.launch" /> -->
+  <!-- 开启RGB摄像头  -->
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch" />
+
+  <!-- 开启色块跟踪节点  -->
+  <node name='opencv_text_1' pkg="opencv_text_1" type="opencv_debug.py" output="screen">
+
+    <!--  上传相关参数到参数服务器 -->
+    <rosparam ns='visual_angle'>
+      vertical :   46.7
+      horizontal : 80
+    </rosparam>
+
+  </node>
+
+</launch>

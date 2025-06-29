@@ -1,0 +1,82 @@
+# Ackmann底盘专用
+odom_topic: odom
+map_frame: /map
+    
+# Trajectory
+  
+teb_autosize: True
+dt_ref: 0.4
+dt_hysteresis: 0.1
+global_plan_overwrite_orientation: True
+global_plan_viapoint_sep : 0.5
+max_global_plan_lookahead_dist: 3.0
+feasibility_check_no_poses: 5
+    
+# Robot
+         
+max_vel_x: 1.0                 # 最大线速度
+max_vel_x_backwards: 0.15       # 最大倒车速度 ，不能为负数会报错
+max_vel_theta: 0.2             # 最大角速度， 转换为Ackmann转向角度
+acc_lim_x: 1.0                  # 最大线加速
+acc_lim_theta: 0.8              # 最大角加速度
+min_turning_radius: 1.0         # Ackmann最小转弯半径
+footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
+  type: "polygon"  #单车模型
+  vertices: [[-0.305, -0.18], [-0.305, 0.18], [0.305, 0.18], [0.305, -0.18]]
+#  radius: 0.5 # for type "circular"
+  # line_start: [-0.18, 0.0] # for type "line" #车轮前轴到base_linkzuo坐标系距离
+  # line_end: [0.18, 0.0]    # for type "line" #车轮后轴到base_linkzuo坐标系距离
+#  front_offset: 0.2 # for type "two_circles"
+#  front_radius: 0.2 # for type "two_circles"
+#  rear_offset: 0.2 # for type "two_circles"
+#  rear_radius: 0.2 # for type "two_circles"
+#  vertices: [ [0.25, -0.05], [0.18, -0.05], [0.18, -0.18], [-0.19, -0.18], [-0.25, 0], [-0.19, 0.18], [0.18, 0.18], [0.18, 0.05], [0.25, 0.05] ] # for type "polygon"
+
+# GoalTolerance
+    
+xy_goal_tolerance: 0.3          # 到达目标点最大容xy距离忍度 （比赛给大点，以免他来回调整姿态）
+yaw_goal_tolerance: 0.1         # 到达目标点最大方向角容忍度
+free_goal_vel: False
+    
+# Obstacles
+    
+min_obstacle_dist: 0.5                          # 障碍物到车身的避障距离
+include_costmap_obstacles: True                 # 避障距离 + 膨胀层距离
+# 后面参数不太重要 
+costmap_obstacles_behind_robot_dist: 1.0
+obstacle_poses_affected: 30
+costmap_converter_plugin: ""
+costmap_converter_spin_thread: True
+costmap_converter_rate: 5
+
+# Optimization
+    
+no_inner_iterations: 5
+no_outer_iterations: 4
+optimization_activate: True
+optimization_verbose: False
+penalty_epsilon: 0.1
+weight_max_vel_x: 2
+weight_max_vel_theta: 1
+weight_acc_lim_x: 1
+weight_acc_lim_theta: 1
+weight_kinematics_nh: 1000
+weight_kinematics_forward_drive: 1            # 给倒车权限，数值越大，倒车惩罚越大，越不会倒车
+weight_kinematics_turning_radius: 1
+weight_optimaltime: 1000
+weight_obstacle: 50
+weight_viapoint: 1
+
+# Homotopy Class Planner
+
+enable_homotopy_class_planning: True
+enable_multithreading: True
+simple_exploration: False
+max_number_classes: 8
+roadmap_graph_no_samples: 15
+roadmap_graph_area_width: 5
+h_signature_prescaler: 0.5
+h_signature_threshold: 0.1
+obstacle_keypoint_offset: 0.1
+obstacle_heading_threshold: 0.45
+visualize_hc_graph: False
